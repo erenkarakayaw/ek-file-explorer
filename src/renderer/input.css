@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/*
+npx tailwindcss -i ./src/renderer/input.css -o ./src/renderer/output.css --watch
+
+*/
+
+html, body, * {
+  user-select: none;
+  outline: none;
+    font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.freckle-face-regular {
+  font-family: "Freckle Face", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
