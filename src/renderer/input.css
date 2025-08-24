@@ -7,18 +7,62 @@
 npx tailwindcss -i ./src/renderer/input.css -o ./src/renderer/output.css --watch
 
 */
+button {cursor: pointer;}
+
+.test {
+
+}
 
 html, body, * {
   user-select: none;
   outline: none;
-    font-family: "Outfit", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+}
+
+@font-face {
+  font-family: "Freckly Face";
+  src: url("./assets/fonts/Freckle_Face/FreckleFace-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("./assets/fonts/Outfit/Outfit-VariableFont_wght.ttf");
 }
 
 .freckle-face-regular {
   font-family: "Freckle Face", system-ui;
   font-weight: 400;
   font-style: normal;
+}
+
+#rangeslider .range-slider__thumb[data-lower] {
+  width: 0;
+}
+
+#rangeslider .range-slider__thumb[data-lower] {
+  width: 0;
+}
+
+#rangeslider {
+  border: 1px solid;
+}
+
+#rangeslider .range-slider__thumb[data-upper] {
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  border: 1px solid rgb(163,163,163);
+  background-color: rgb(37 ,99 ,235);
+}
+
+#rangeslider:focus .range-slider__range {
+  background-color: aqua;
+}
+
+#rangeslider .range-slider__range {
+    background-color: rgb(37 ,99 ,235);
+    border-radius: 12px;
 }

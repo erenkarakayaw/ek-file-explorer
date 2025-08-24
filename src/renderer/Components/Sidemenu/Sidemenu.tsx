@@ -12,12 +12,12 @@ export default function Sidemenu() {
       <p className="text-lg text-neutral-400 font-bold ml-5 max-sm:ml-2 max-sm:truncate mt-20">Locations</p>
       <ul className="ml-5 mt-1 text-lg">
         <li>
-          <SideMenuButton icon={<CiDesktop color="" size={25} />} title={"Desktop"} />
-          <SideMenuButton icon={<IoDocumentOutline color="" size={25} />} title={"Documents"}/>
-          <SideMenuButton icon={<MdOutlineDownload color="" size={25} />} title={"Downloads"}/>
-          <SideMenuButton icon={<IoMusicalNotesOutline color="" size={25} />} title={"Music"}/>
-          <SideMenuButton icon={<AiOutlinePicture color="" size={25} />} title={"Pictures"}/>
-          <SideMenuButton icon={<LiaPhotoVideoSolid color="" size={25} />} title={"Videos"}/>
+          <SideMenuButton selected={true} icon={<CiDesktop color="" size={25} />} title={"Desktop"} />
+          <SideMenuButton selected={false} icon={<IoDocumentOutline color="" size={25} />} title={"Documents"}/>
+          <SideMenuButton selected={false} icon={<MdOutlineDownload color="" size={25} />} title={"Downloads"}/>
+          <SideMenuButton selected={false} icon={<IoMusicalNotesOutline color="" size={25} />} title={"Music"}/>
+          <SideMenuButton selected={false} icon={<AiOutlinePicture color="" size={25} />} title={"Pictures"}/>
+          <SideMenuButton selected={false} icon={<LiaPhotoVideoSolid color="" size={25} />} title={"Videos"}/>
         </li>
       </ul>
     </div>
