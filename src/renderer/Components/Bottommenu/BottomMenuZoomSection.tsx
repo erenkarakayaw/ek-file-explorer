@@ -6,7 +6,7 @@ export default function BottomMenuZoomSection({ zoomMode }) {
     <>
       <RangeSlider
         id="rangeslider"
-        className="absolute w-32 h-2 active:animate-pulse bottom-3 right-3 bg-blue-300 border-neutral-400"
+        className="fixed w-32 h-2 active:animate-pulse bottom-3 right-3 bg-blue-300 border-neutral-400"
         defaultValue={[0, 50]}
         min={0}
         max={2}

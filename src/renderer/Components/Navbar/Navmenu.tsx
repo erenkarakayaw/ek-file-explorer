@@ -8,7 +8,7 @@ export default function Navmenu({ left, top }) {
     <NavExpander left={left} top={top} onMouseDown={() => {}}/>
       <nav
         style={{ width: `${100 - left}%`, left: `${left}%`, height: `${top}%` }}
-        className="absolute text-white bg-white border-l-2 border-t-2 border-r-2 border-neutral-400"
+        className="fixed z-10 text-white bg-white border-l-2 border-t-2 border-r-2 border-neutral-400"
       >
         <div className="flex" style={{}}>
           <NavCurrentDirSection currentFolder={'Desktop'} />

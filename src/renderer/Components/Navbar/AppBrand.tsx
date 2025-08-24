@@ -1,7 +1,7 @@
 import { PiFolderSimpleStarFill } from "react-icons/pi";
 export default function AppBrand() {
   return <>
-    <div className="absolute max-lg:gap-0 top-4 left-4 z-10 gap-3 max-xl:gap-2 items-center inline-flex">
+    <div className="fixed max-lg:gap-0 top-4 left-4 z-10 gap-3 max-xl:gap-2 items-center inline-flex">
       <span className="text-blue-500 max-2xl:hidden">
         <PiFolderSimpleStarFill size={37}/>
       </span>
