@@ -1,13 +1,20 @@
-import NavCurrentDirSection from "./NavCurrentDirSection";
-import NavViewSection from "./NavViewSection";
+import NavCurrentDirSection from './NavCurrentDirSection';
+import NavExpander from './NavExpander';
+import NavViewSection from './NavViewSection';
 
-export default function Navmenu() {
+export default function Navmenu({ left, top }) {
   return (
-    <nav className="absolute left-0 w-full text-white h-20 bg-white border-2 border-neutral-400">
-      <div className="flex" style={{marginLeft: "16.6%"}}>
-        <NavCurrentDirSection currentFolder={"Desktop"}/>
-        <NavViewSection />
-      </div>
-    </nav>
+    <>
+    <NavExpander left={left} top={top} onMouseDown={() => {}}/>
+      <nav
+        style={{ width: `${100 - left}%`, left: `${left}%`, height: `${top}%` }}
+        className="absolute text-white bg-white border-l-2 border-t-2 border-r-2 border-neutral-400"
+      >
+        <div className="flex" style={{}}>
+          <NavCurrentDirSection currentFolder={'Desktop'} />
+          <NavViewSection />
+        </div>
+      </nav>
+    </>
   );
 }
