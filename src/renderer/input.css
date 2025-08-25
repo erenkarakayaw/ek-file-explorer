@@ -66,3 +66,29 @@ html, body, * {
     background-color: rgb(37 ,99 ,235);
     border-radius: 12px;
 }
+
+.scrollbar-custom::-webkit-scrollbar {
+  width: 22px;  /* increased width */
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  width: 22;  /* same as scrollbar width */
+  background: rgb(221, 221, 221);
+  border: 3px solid transparent;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  width: 12px;  /* smaller than track */
+  background: #a8a8a8;
+  border: 3px solid transparent;
+  /* Add padding to create space around thumb */
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  background-clip: padding-box;
+  border-radius: 20px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: #7e7d7d;
+  background-clip: padding-box;
+}

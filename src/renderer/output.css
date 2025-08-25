@@ -703,6 +703,10 @@ video {
   height: 100%;
 }
 
+.h-\[100px\] {
+  height: 100px;
+}
+
 .w-0\.5 {
   width: 0.125rem;
 }
@@ -723,8 +727,24 @@ video {
   width: 100%;
 }
 
+.w-12 {
+  width: 3rem;
+}
+
+.w-\[100px\] {
+  width: 100px;
+}
+
+.w-20 {
+  width: 5rem;
+}
+
 .min-w-32 {
   min-width: 8rem;
+}
+
+.cursor-default {
+  cursor: default;
 }
 
 .cursor-e-resize {
@@ -739,10 +759,6 @@ video {
   cursor: pointer;
 }
 
-.cursor-default {
-  cursor: default;
-}
-
 .flex-col {
   flex-direction: column;
 }
@@ -755,8 +771,20 @@ video {
   align-items: center;
 }
 
+.justify-end {
+  justify-content: flex-end;
+}
+
 .justify-center {
   justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-1 {
+  gap: 0.25rem;
 }
 
 .gap-2 {
@@ -767,8 +795,8 @@ video {
   gap: 0.75rem;
 }
 
-.gap-4 {
-  gap: 1rem;
+.self-stretch {
+  align-self: stretch;
 }
 
 .truncate {
@@ -783,6 +811,10 @@ video {
 
 .rounded-xl {
   border-radius: 0.75rem;
+}
+
+.rounded-md {
+  border-radius: 0.375rem;
 }
 
 .border-2 {
@@ -815,9 +847,9 @@ video {
   background-color: rgb(147 197 253 / var(--tw-bg-opacity, 1));
 }
 
-.bg-blue-700 {
+.bg-gray-100 {
   --tw-bg-opacity: 1;
-  background-color: rgb(29 78 216 / var(--tw-bg-opacity, 1));
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
 }
 
 .bg-gray-200\/80 {
@@ -847,9 +879,9 @@ video {
   background-color: rgb(115 115 115 / 0.6);
 }
 
-.bg-white {
+.bg-blue-500 {
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity, 1));
 }
 
 .bg-blue-400 {
@@ -859,6 +891,10 @@ video {
 
 .p-1 {
   padding: 0.25rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
 }
 
 .px-3 {
@@ -876,6 +912,15 @@ video {
   padding-bottom: 0.5rem;
 }
 
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -891,12 +936,13 @@ video {
   line-height: 1.75rem;
 }
 
-.font-bold {
-  font-weight: 700;
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
-.font-semibold {
-  font-weight: 600;
+.font-bold {
+  font-weight: 700;
 }
 
 .text-blue-400 {
@@ -993,6 +1039,35 @@ html, body, * {
   border-radius: 12px;
 }
 
+.scrollbar-custom::-webkit-scrollbar {
+  width: 22px;
+  /* increased width */
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  width: 22;
+  /* same as scrollbar width */
+  background: rgb(221, 221, 221);
+  border: 3px solid transparent;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  width: 12px;
+  /* smaller than track */
+  background: #a8a8a8;
+  border: 3px solid transparent;
+  /* Add padding to create space around thumb */
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  background-clip: padding-box;
+  border-radius: 20px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: #7e7d7d;
+  background-clip: padding-box;
+}
+
 .hover\:bg-gray-200\/80:hover {
   background-color: rgb(229 231 235 / 0.8);
 }
@@ -1004,6 +1079,11 @@ html, body, * {
 .hover\:bg-neutral-500:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(115 115 115 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-neutral-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 229 229 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:text-neutral-600:hover {

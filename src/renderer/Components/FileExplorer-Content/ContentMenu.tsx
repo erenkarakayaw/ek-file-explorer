@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import folderIcon from '../../assets/macos-folder-original.svg';
 import FolderItem from './FolderItem';
+import FileItem from './FileItem';
 
 export default function ContextMenu({
   sideMenuWidth,
@@ -8,34 +8,53 @@ export default function ContextMenu({
   contentMenuWidth,
   navMenuHeight,
 }) {
-  const [fs, setFs] = useState(false);
-  const [arr, setArr] = useState([]);
+  const [selectedFolder, setSelectedFolder] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(false);
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
-    let ck = [];
-    for (let i = 0; i < 80; i++) ck.push(i);
-    setArr(ck);
+    // Example items - replace with your actual data
+    const dummyItems = [
+      { type: 'folder', name: 'Documents' },
+      { type: 'file', name: 'mynotes', extension: 'txt' },
+      { type: 'file', name: 'report', extension: 'pdf' },
+      { type: 'folder', name: 'Pictures' },
+      { type: 'file', name: 'document', extension: 'docx' },
+    ];
+    setItems(dummyItems);
   }, []);
 
   return (
     <>
       <div
         style={{
-          left: `${sideMenuWidth + 5}%`,
-          width: `${contentMenuWidth - 5}%`,
-          top: `${navMenuHeight + 5}%`,
-          height: `${contentMenuHeight - 5}%`,
+          left: `${sideMenuWidth + 3}%`,
+          width: `${contentMenuWidth - 3}%`,
+          top: `${navMenuHeight + 5}px`,
+          height: `calc(100vh - ${navMenuHeight + 60}px)`,
+          overflowY: 'auto',
+          position: 'absolute',
         }}
-        className="absolute flex gap-4 flex-wrap"
+        className="flex gap-1 flex-wrap p-2 scrollbar-custom"
       >
-        {arr.map((i) => (
-          <FolderItem
-            key={i}
-            selected={fs}
-            name={'Documents'}
-            onClick={setFs}
-          />
-        ))}
+        {items.map((item, index) =>
+          item.type === 'folder' ? (
+            <FolderItem
+              key={index}
+              selected={selectedFolder}
+              name={item.name}
+              onClick={setSelectedFolder}
+            />
+          ) : (
+            <FileItem
+              key={index}
+              selected={selectedFile}
+              name={item.name}
+              extension={item.extension}
+              onClick={setSelectedFile}
+            />
+          ),
+        )}
       </div>
     </>
   );

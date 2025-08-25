@@ -2,8 +2,13 @@ export default function NavExpander({ left, top, onMouseDown }) {
   return (
     <>
       <div
-        style={{ width:`${100-left}%`,height: '2px', left: `${left}%`, top: `${top}%` }}
-        className="w-full bg-neutral-400 z-10 fixed cursor-n-resize hover:bg-neutral-500"
+        style={{
+          width: `${100 - left}%`,
+          height: '2px',
+          left: `${left}%`,
+          top: `${top}px`,
+        }}
+        className="w-full bg-neutral-400 z-40 fixed cursor-n-resize hover:bg-neutral-500"
       ></div>
     </>
   );
