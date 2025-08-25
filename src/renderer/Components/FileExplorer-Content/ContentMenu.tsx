@@ -3,59 +3,73 @@ import FolderItem from './FolderItem';
 import FileItem from './FileItem';
 
 export default function ContextMenu({
+  items: initialItems,
+  setItems: setInitialItems,
   sideMenuWidth,
   contentMenuHeight,
   contentMenuWidth,
   navMenuHeight,
 }) {
-  const [selectedFolder, setSelectedFolder] = useState(false);
-  const [selectedFile, setSelectedFile] = useState(false);
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(initialItems);
 
   useEffect(() => {
-    // Example items - replace with your actual data
-    const dummyItems = [
-      { type: 'folder', name: 'Documents' },
-      { type: 'file', name: 'mynotes', extension: 'txt' },
-      { type: 'file', name: 'report', extension: 'pdf' },
-      { type: 'folder', name: 'Pictures' },
-      { type: 'file', name: 'document', extension: 'docx' },
-    ];
-    setItems(dummyItems);
+    const loadDirectory = async () => {
+      try {
+        const currentPath = await window.electron.ipcRenderer.invoke(
+          'get-current-directory',
+        );
+        const result = await window.electron.ipcRenderer.invoke(
+          'scan-directory',
+          currentPath,
+        );
+        setItems(result);
+      } catch (error) {
+        console.error('Error loading directory:', error);
+      }
+    };
+
+    loadDirectory();
   }, []);
 
+  const handleItemClick = (itemId) => {
+    setItems(
+      items.map((item) => ({
+        ...item,
+        selected: item.id === itemId ? !item.selected : false,
+      })),
+    );
+  };
+
   return (
-    <>
-      <div
-        style={{
-          left: `${sideMenuWidth + 3}%`,
-          width: `${contentMenuWidth - 3}%`,
-          top: `${navMenuHeight + 5}px`,
-          height: `calc(100vh - ${navMenuHeight + 60}px)`,
-          overflowY: 'auto',
-          position: 'absolute',
-        }}
-        className="flex gap-1 flex-wrap p-2 scrollbar-custom"
-      >
-        {items.map((item, index) =>
-          item.type === 'folder' ? (
-            <FolderItem
-              key={index}
-              selected={selectedFolder}
-              name={item.name}
-              onClick={setSelectedFolder}
-            />
-          ) : (
-            <FileItem
-              key={index}
-              selected={selectedFile}
-              name={item.name}
-              extension={item.extension}
-              onClick={setSelectedFile}
-            />
-          ),
-        )}
-      </div>
-    </>
+    <div
+      style={{
+        left: `${sideMenuWidth + 1}%`,
+        width: `${contentMenuWidth - 3}%`,
+        top: `${navMenuHeight + 5}px`,
+        height: `calc(100vh - ${navMenuHeight + 60}px)`,
+        overflowY: 'auto',
+        position: 'absolute',
+      }}
+      className="grid grid-cols-[repeat(auto-fill,minmax(128px,1fr))] auto-rows-[160px] gap-1 p-2 scrollbar-custom"
+    >
+      {items.map((item) =>
+        item.type === 'folder' ? (
+          <FolderItem
+            key={item.id}
+            selected={item.selected}
+            name={item.name}
+            onClick={() => handleItemClick(item.id)}
+          />
+        ) : (
+          <FileItem
+            key={item.id}
+            selected={item.selected}
+            name={item.name}
+            extension={item.extension}
+            onClick={() => handleItemClick(item.id)}
+          />
+        ),
+      )}
+    </div>
   );
 }

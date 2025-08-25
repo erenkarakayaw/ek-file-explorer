@@ -14,6 +14,8 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
+import { join } from 'path';
+import { promises as fs } from 'fs';
 
 class AppUpdater {
   constructor() {
@@ -24,7 +26,6 @@ class AppUpdater {
 }
 
 let mainWindow: BrowserWindow | null = null;
-
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
@@ -71,7 +72,7 @@ const createWindow = async () => {
     icon: getAssetPath('icon.png'),
     autoHideMenuBar: true,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
     },
   });
 
@@ -129,3 +130,34 @@ app
     });
   })
   .catch(console.log);
+
+ipcMain.handle('get-current-directory', () => {
+  return process.cwd();
+});
+
+ipcMain.handle('scan-directory', async (event, path) => {
+  try {
+    const items = await fs.readdir(path, { withFileTypes: true });
+    const result = await Promise.all(
+      items.map(async (item) => {
+        const fullPath = join(path, item.name);
+        const stats = await fs.stat(fullPath);
+
+        return {
+          id: Math.random().toString(36).substr(2, 9),
+          name: item.name.split('.')[0], // Get name without extension
+          type: item.isDirectory() ? 'folder' : 'file',
+          extension: item.isFile() ? item.name.split('.').pop() || '' : '',
+          path: fullPath,
+          size: stats.size,
+          modifiedTime: stats.mtime,
+          selected: false,
+        };
+      }),
+    );
+    return result;
+  } catch (error) {
+    console.error('Error scanning directory:', error);
+    throw error;
+  }
+});

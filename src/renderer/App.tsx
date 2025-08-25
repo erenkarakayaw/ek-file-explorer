@@ -13,11 +13,34 @@ export default function App() {
   const [contentMenuWidth, setContentMenuWidth] = useState(83.34);
   //bottom-menu 4% çalıyor
   const [contentMenuHeight, setContentMenuHeight] = useState(86);
-
+  const [items, setItems] = useState([
+    { id: 1, type: 'folder', name: 'Documents', selected: false },
+    {
+      id: 2,
+      type: 'file',
+      name: 'mynotes',
+      extension: 'txt',
+      selected: false,
+    },
+    {
+      id: 3,
+      type: 'file',
+      name: 'report',
+      extension: 'pdf',
+      selected: false,
+    },
+    { id: 4, type: 'folder', name: 'Pictures', selected: false },
+    {
+      id: 5,
+      type: 'file',
+      name: 'document',
+      extension: 'docx',
+      selected: false,
+    },
+  ]);
   const [currentDirectory, setCurrentDirectory] = useState(
     'C:/Users/erenk/Desktop',
   );
-
   const [currentDirectoryItems, setCurrentDirectoryItems] = useState(10);
   const [currentDirectoryItemSize, setCurrentDirectoryItemSize] =
     useState('1.8 GB');
@@ -36,6 +59,8 @@ export default function App() {
       />
 
       <ContextMenu
+        items={items}
+        setItems={setItems}
         sideMenuWidth={sideMenuWidth}
         contentMenuHeight={contentMenuHeight}
         contentMenuWidth={contentMenuWidth}
