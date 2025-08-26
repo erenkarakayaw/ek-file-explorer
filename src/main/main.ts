@@ -69,6 +69,7 @@ const createWindow = async () => {
     show: false,
     width: 1024,
     height: 728,
+    frame: false,
     icon: getAssetPath('icon.png'),
     autoHideMenuBar: true,
     webPreferences: {
@@ -160,4 +161,19 @@ ipcMain.handle('scan-directory', async (event, path) => {
     console.error('Error scanning directory:', error);
     throw error;
   }
+});
+ipcMain.on('minimize', (event) => {
+  const win = BrowserWindow.getFocusedWindow();
+  win.minimize();
+});
+
+ipcMain.on('maximize', (event) => {
+  const win = BrowserWindow.getFocusedWindow();
+  if (win.isMaximized()) win.unmaximize();
+  else win.maximize();
+});
+
+ipcMain.on('close', (event) => {
+  const win = BrowserWindow.getFocusedWindow();
+  win.close();
 });

@@ -12,7 +12,7 @@ export default function Navmenu({ left, top }) {
           left: `${left}%`,
           height: `${top}px`,
         }}
-        className="fixed z-10 text-white bg-gray-100 border-l-2 border-t-2 border-r-2 border-neutral-400"
+        className="fixed z-10 top-8 text-white bg-gray-100 border-l-2  border-r-2 border-neutral-400"
       >
         <div className="flex" style={{}}>
           <NavCurrentDirSection currentFolder={'Desktop'} />

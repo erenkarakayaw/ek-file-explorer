@@ -6,6 +6,7 @@ import AppBrand from './Components/Sidemenu/AppBrand';
 import BottomMenu from './Components/Bottommenu/BottomMenu';
 import { useEffect, useState } from 'react';
 import ContextMenu from './Components/FileExplorer-Content/ContentMenu';
+import Titlebar from './Components/Titlebar';
 
 export default function App() {
   const [sideMenuWidth, setsideMenuWidth] = useState(16.66);
@@ -51,6 +52,7 @@ export default function App() {
 
   return (
     <>
+      <Titlebar />
       <AppBrand />
       <Navmenu left={sideMenuWidth} top={navMenuHeight} />
       <Sidemenu

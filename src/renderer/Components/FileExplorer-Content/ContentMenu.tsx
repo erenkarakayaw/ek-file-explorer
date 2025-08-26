@@ -45,7 +45,7 @@ export default function ContextMenu({
       style={{
         left: `${sideMenuWidth + 1}%`,
         width: `${contentMenuWidth - 3}%`,
-        top: `${navMenuHeight + 5}px`,
+        top: `${navMenuHeight + 37}px`,
         height: `calc(100vh - ${navMenuHeight + 60}px)`,
         overflowY: 'auto',
         position: 'absolute',

@@ -47,7 +47,7 @@ export default function Sidemenu({ widthPercent, setWidthPercent }) {
       <div
         ref={sidemenuRef}
         style={{ width: `${widthPercent}%` }}
-        className="fixed top-0 left-0 h-full border-t-2 border-b-2 border-l-2 border-neutral-400 bg-gray-300"
+        className="fixed top-8 left-0 h-full border-b-2 border-l-2 border-neutral-400 bg-gray-300"
       >
         <p className="text-lg text-neutral-400 font-bold ml-5 max-sm:ml-2 max-sm:truncate mt-20">
           Locations

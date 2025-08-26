@@ -92,3 +92,25 @@ html, body, * {
   background: #7e7d7d;
   background-clip: padding-box;
 }
+
+.titlebar {
+  -webkit-app-region: drag; /* allows dragging window */
+  width: 100%;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Buttons */
+.window-controls button {
+  -webkit-app-region: no-drag; /* buttons should be clickable */
+  cursor: pointer;
+}
+
+/* Main content */
+.content {
+  padding: 20px;
+}

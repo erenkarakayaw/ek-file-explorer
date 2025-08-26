@@ -6,7 +6,7 @@ export default function NavExpander({ left, top, onMouseDown }) {
           width: `${100 - left}%`,
           height: '2px',
           left: `${left}%`,
-          top: `${top}px`,
+          top: `${top + 32}px`,
         }}
         className="w-full bg-neutral-400 z-40 fixed cursor-n-resize hover:bg-neutral-500"
       ></div>
